@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+<data>
+    <variable
+        name="viewModel"
+        type="com.example.colorclicker.home.viewmodel.ColorClickerViewModel" />
+
+    <variable
+        name="position"
+        type="Integer" />
+
+</data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="0dp"
+            tools:text="1"
+            android:layout_margin="8dp"
+            android:gravity="center"
+            android:textSize="24sp"
+            android:padding="12dp"
+            android:textColor="@color/white"
+            tools:background="#ff0000"
+            android:foreground="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_height="wrap_content"
+            android:background="@{position%2==0?viewModel.evenColor:viewModel.oddColor}"
+            android:text="@{String.valueOf(viewModel.numberList[position])}"
+            android:onClick="@{()->viewModel.setSelectedNumber(position)}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
